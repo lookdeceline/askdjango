@@ -9,9 +9,18 @@ def lnglat_validator(value):
 
 
 class Post(models.Model):
+    STATUS_CHOICES = (
+        ('d', 'Draft'),
+        ('p', 'Published'),
+        ('w', 'Withdrawn'),
+    )
+
     author = models.CharField(max_length=20) #blank, null options False by default
     title = models.CharField(max_length=100, help_text="title of article") # verbose_name = "제목"
     content = models.TextField() # verbose_name = "내용"
+
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now = True)
     tags = models.CharField(max_length=100, blank = True)
