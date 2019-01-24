@@ -36,3 +36,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)    #.ForeignKey()로 생성하면 SQL에서는 post_id라는 이름의 필드가 생성됨.
+    author = models.CharField(max_length=20)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)

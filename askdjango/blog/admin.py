@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Comment
 # Register your models here.
 
 # admin에 등록 방법들
@@ -56,4 +56,9 @@ class PostAdmin(admin.ModelAdmin):
     def make_withdrawl(self, request, queryset):
         updated_count = queryset.update(status='p') #QuerySet.update
         self.message_user(request, '{}건의 포스팅을 Withdrawn 상태로 변경'.format(updated_count))  #django message framework 활용
-    make_withdrawl.short_description = 'Withdrawn'
+    make_withdrawl.short_description = 'Withdrawn'\
+
+
+    @admin.register(Comment)
+    class CommentAdmin(admin.ModelAdmin):
+        pass
