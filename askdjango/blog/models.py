@@ -29,3 +29,10 @@ class Post(models.Model):
                               help_text= "위도/경도 형식으로 입력", blank = True)
 
 
+    class Meta:     #데이터베이스에 특정 필드로 정렬 조건 추가 lec9/26:56
+                    #queryset내 기본정렬은 모델내 Meta.ordering 설정을 따름
+        ordering = ['-id']   # 'id': 올림차순정렬
+
+
+    def __str__(self):
+        return self.title

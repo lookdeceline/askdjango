@@ -18,6 +18,8 @@ from django.urls import path
 from django.conf.urls import include
 
 # askdjango/urls.py
+from django.conf import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
@@ -25,3 +27,10 @@ urlpatterns = [
     path('dojo/', include('dojo.urls')),
 
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns +=[
+        path('__debug__/', include(debug_toolbar.urls)),
+
+    ]
