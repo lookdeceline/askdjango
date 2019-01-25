@@ -43,5 +43,10 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)    #.ForeignKey()로 생성하면 SQL에서는 post_id라는 이름의 필드가 생성됨.
     author = models.CharField(max_length=20)
     message = models.TextField()
+    tag_set = models.ManyToManyField('Tag')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50, unique=True)
