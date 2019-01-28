@@ -1,20 +1,27 @@
-{% extends "layout.html" %}
-
-{% block title %}AskDjango's Blog{% endblock %}
-
 {% comment %}
+settings.py의
+TEMPLATES 에서
+'DIRS': [
+            os.path.join(BASE_DIR, 'askdjango', 'templates',)
+        ],
+를 추가해 줘야 path가 인식됨.
+{% endcomment %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <title>{% block title %}AskDjango's Blog{% endblock %}</title>
+    <title>{% block title %}AskDjango{% endblock %}</title>
 </head>
 <body>
 <h1>AskDjango</h1>
+
 {% block content %}
 {% endblock %}
 
+<hr/>
+&copy; 2017 AskDjango
+
 </body>
 </html>
-{% endcomment %}
