@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>post_list.html</title>
-</head>
-<body>
-    <h1>AskDJango</h1>
+{% extends "blog/layout.html" %}
+
+{% block content %}
 
     <p>안녕하세요. 여러분의 파이썬 </p>
 
@@ -15,7 +10,7 @@
          <input type="text" name ="q" value ="{{ q }}">
          <input type="submit" value = "search">
     </form>
-    
+
     <ul>
     {% for post in post_list %}
         <li>
@@ -31,5 +26,4 @@
     <ul>
     <li>http://localhost:8000/blog/ 주소로 접속해보세요.</li>
 </ul>
-</body>
-</html>
+{% endblock %}

@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ post.title }}</title>
-</head>
-<body>
-    <h1>{{ post.title }}</h1>
+{% extends "blog/layout.html" %}
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
     <p>{{ post.content|linebreaks }}</p>
 
     <hr/>
@@ -22,5 +21,4 @@
         </li>
     {% endfor %}
 </ul>
-</body>
-</html>
+{% endblock %}
