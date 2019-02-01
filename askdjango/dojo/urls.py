@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+app_name='dojo'
 urlpatterns = [
     path('<int:x>', views.mysum),
     path('<name>/<age>', views.hello),
