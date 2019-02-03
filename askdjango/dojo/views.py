@@ -1,8 +1,32 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf import settings
 from django.http import HttpResponse
 import os
 # Create your views here.
+from . import models
+from . import forms
+
+
+def post_new(request):
+    if request.method == 'POST':
+        form = forms.PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = models.Post(title = form.cleaned_data['title'],
+                               content = form.cleaned_data['content'])
+            #or
+            # post = models.Post.objects.create(title = form.cleaned_data['title'],
+            #                    content = form.cleaned_data['content'])
+
+            # or
+            # post = models.Post.objects.create(**form.cleaned_data)
+            post.save()
+            return redirect('/dojo/')
+    else:
+        form = forms.PostForm()
+    return render(request, 'dojo/post_form.html', {
+        'form':form,
+    })
+
 
 def mysum(request, x):
     return HttpResponse(x + 100)

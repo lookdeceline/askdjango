@@ -6,5 +6,5 @@ def min_length_3_validator(value):
 
 
 class PostForm(forms.Form):
-    title = forms.CharField(validators=[min_length_3_validator()])
+    title = forms.CharField(validators=[min_length_3_validator])
     content = forms.CharField(widget=forms.Textarea)

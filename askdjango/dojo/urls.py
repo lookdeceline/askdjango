@@ -3,6 +3,7 @@ from . import views
 
 app_name='dojo'
 urlpatterns = [
+    path('new/', views.post_new),
     path('<int:x>', views.mysum),
     path('<name>/<age>', views.hello),
     path('list1/', views.post_list1),
