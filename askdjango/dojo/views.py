@@ -11,8 +11,10 @@ def post_new(request):
     if request.method == 'POST':
         form = forms.PostForm(request.POST, request.FILES)
         if form.is_valid():
-            post = models.Post(title = form.cleaned_data['title'],
-                               content = form.cleaned_data['content'])
+            post = form.save()
+            # post = models.Post(title = form.cleaned_data['title'],
+            #                    content = form.cleaned_data['content'])
+
             #or
             # post = models.Post.objects.create(title = form.cleaned_data['title'],
             #                    content = form.cleaned_data['content'])
