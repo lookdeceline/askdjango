@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.http import HttpResponse
 import os
 # Create your views here.
+from .models import Post
 from . import models
 from . import forms
 
@@ -27,6 +28,32 @@ def post_new(request):
             return redirect('/dojo/')
     else:
         form = forms.PostForm()
+    return render(request, 'dojo/post_form.html', {
+        'form':form,
+    })
+
+
+def post_edit(request, pk):
+    post = get_object_or_404(Post, id=pk)
+    if request.method == 'POST':
+        form = forms.PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.ip = request.META['REMOTE_ADDR']
+            post.save()
+            # post = models.Post(title = form.cleaned_data['title'],
+            #                    content = form.cleaned_data['content'])
+
+            #or
+            # post = models.Post.objects.create(title = form.cleaned_data['title'],
+            #                    content = form.cleaned_data['content'])
+
+            # or
+            # post = models.Post.objects.create(**form.cleaned_data)
+            post.save()
+            return redirect('/dojo/')
+    else:
+        form = forms.PostForm(instance=post)
     return render(request, 'dojo/post_form.html', {
         'form':form,
     })
