@@ -11,7 +11,9 @@ def post_new(request):
     if request.method == 'POST':
         form = forms.PostForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save()
+            post = form.save(commit=False)
+            post.ip = request.META['REMOTE_ADDR']
+            post.save()
             # post = models.Post(title = form.cleaned_data['title'],
             #                    content = form.cleaned_data['content'])
 
