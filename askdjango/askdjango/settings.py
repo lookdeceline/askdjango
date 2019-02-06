@@ -127,5 +127,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 INTERNAL_IPS=['127.0.0.1']
+
+# askdjango/settings.py
+from django.contrib.messages import constants as message_constants
+
+MESSAGE_LEVEL = message_constants.DEBUG
+MESSAGE_TAGS = {message_constants.ERROR: 'danger'}
