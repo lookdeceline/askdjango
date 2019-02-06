@@ -20,8 +20,8 @@ TEMPLATES 에서
     <!-- bootstrap: cosmo theme -->
     <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" /> -->
 
-     <link rel="stylesheet" href="/static/style.css" />
-    {% comment %}<link rel="stylesheet" href="{% static "style.css" %}" />{% endcomment %}
+    {% comment %} <link rel="stylesheet" href="/static/style.css" />{% endcomment %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
 </head>
 
 <body>
@@ -37,17 +37,17 @@ TEMPLATES 에서
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    {% comment %}<li class="active"><a href="{% url "root" %}">Home</a></li>{% endcomment %}
+                    {% comment %}<li class="active"><a href="{% url 'root' %}">Home</a></li>{% endcomment %}
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact {{ current_datetime }}</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if not user.is_authenticated %}
-                        {% comment %}<li><a href="{% url "signup" %}">회원가입</a></li>{% endcomment %}
-                        {% comment %}<li><a href="{% url "login" %}?next={{ request.path }}">로그인</a></li>{% endcomment %}
+                        {% comment %}<li><a href="{% url 'signup' %}">회원가입</a></li>{% endcomment %}
+                        {% comment %}<li><a href="{% url 'login' %}?next={{ request.path }}">로그인</a></li>{% endcomment %}
                     {% else %}
-                        {% comment %}<li><a href="{% url "profile" %}">프로필</a></li>{% endcomment %}
-                        {% comment %}<li><a href="{% url "logout" %}?next={{ request.path }}">로그아웃</li>{% endcomment %}
+                        {% comment %}<li><a href="{% url 'profile' %}">프로필</a></li>{% endcomment %}
+                        {% comment %}<li><a href="{% url 'logout' %}?next={{ request.path }}">로그아웃</li>{% endcomment %}
                     {% endif %}
                 </ul>
             </div>
