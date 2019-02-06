@@ -2,7 +2,8 @@ from django.db import models
 import re
 from django.forms import ValidationError
 from django.urls import reverse
-from imagekit.models import ImageSpecField
+# from imagekit.models import ImageSpecField
+from imagekit.models import ProcessedImageField
 from imagekit.processors import Thumbnail
 
 
@@ -21,11 +22,15 @@ class Post(models.Model):
     author = models.CharField(max_length=20) #blank, null options False by default
     title = models.CharField(max_length=100, help_text="title of article") # verbose_name = "제목"
     content = models.TextField() # verbose_name = "내용"
-    photo = models.ImageField(blank=True, upload_to='blog/post/%Y/%m/%d')
-    photo_thumbnail = ImageSpecField(source='photo',
-                                     processors=[Thumbnail(300,300)],
-                                     format='JPEG',
-                                     options={'quality':60})
+    photo = ProcessedImageField(blank=True, upload_to='blog/post/%Y/%m/%d',
+                                processors=[Thumbnail(300, 300)],
+                                format='JPEG',
+                                options={'quality': 60})
+    # photo = models.ImageField(blank=True, upload_to='blog/post/%Y/%m/%d')
+    # photo_thumbnail = ImageSpecField(source='photo',
+    #                                  processors=[Thumbnail(300,300)],
+    #                                  format='JPEG',
+    #                                  options={'quality':60})
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
 
     created_at = models.DateTimeField(auto_now_add=True)
