@@ -5,6 +5,11 @@
 
 {% block content %}
 <h1>{{ post.title }}</h1>
+
+    {% if post.photo %}
+        <img src="{{ post.photo.url }}" style="max-width: 100%;" />
+    {% endif %}
+
     <p>{{ post.content|linebreaks }}</p>
 
     <hr/>
