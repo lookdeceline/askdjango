@@ -8,6 +8,12 @@ from . import models
 from . import forms
 
 
+def post_detail(request, pk):
+    post = get_object_or_404(Post, id=pk)
+    return render(request, 'dojo/post_detail.html',{
+        'post':post,
+    })
+
 def post_new(request):
     if request.method == 'POST':
         form = forms.PostForm(request.POST, request.FILES)

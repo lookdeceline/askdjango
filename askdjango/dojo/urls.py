@@ -4,6 +4,7 @@ from . import views
 app_name='dojo'
 urlpatterns = [
     path('new/', views.post_new),
+    path('<int:pk>/', views.post_detail),
     path('<int:pk>/edit/', views.post_edit),
     path('<int:x>', views.mysum),
     path('<name>/<age>/', views.hello),
