@@ -7,7 +7,7 @@
 <h1>{{ post.title }}</h1>
 
     {% if post.photo %}
-        <img src="{{ post.photo.url }}" style="max-width: 100%;" />
+        <img src="{{ post.photo_thumbnail.url }}" style="max-width: 100%;" />
     {% endif %}
 
     <p>{{ post.content|linebreaks }}</p>
@@ -28,5 +28,5 @@
 </ul>
 
 <hr/>
-<a href="{% url "blog:post_list" %}">글 목록</a>
+<a href="{% url 'blog:post_list' %}">글 목록</a>
 {% endblock %}
