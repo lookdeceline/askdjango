@@ -1,5 +1,4 @@
 from django import forms
-
 from .models import Post
 
 
@@ -21,4 +20,7 @@ def min_length_3_validator(value):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content']
+        fields = ['title', 'content', 'user_agent']
+        widgets = {
+            'user_agent': forms.HiddenInput,
+        }
