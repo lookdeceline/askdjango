@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.shortcuts import redirect
 from django.urls import path
 from django.conf.urls import include
-
+from django.conf.urls.static import static
 # askdjango/urls.py
 from django.conf import settings
 
@@ -33,6 +33,8 @@ urlpatterns = [
     path('account/', include('accounts.urls', namespace='account')),
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
