@@ -22,7 +22,7 @@ def signup(request):
 
 
 
-@login_required
+@login_required # decorater that wraps the below ftn
 def profile(request):
     return render(request, 'accounts/profile.html')
 
