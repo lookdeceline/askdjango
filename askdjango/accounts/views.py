@@ -8,18 +8,31 @@ from django.shortcuts import redirect, render
 from .forms import SignupForm, LoginForm
 from django.contrib.auth.forms import UserCreationForm
 
+# non-custom singup
+# def signup(request):
+#     if request.method == 'POST':
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             return redirect(settings.LOGIN_URL) # default: "/accounts/login/"
+#     else:
+#         form = UserCreationForm()
+#     return render(request, 'accounts/signup_form.html', {
+#         'form':form,
+#     })
+
+# custom singup
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save()
             return redirect(settings.LOGIN_URL) # default: "/accounts/login/"
     else:
-        form = UserCreationForm()
+        form = SignupForm()
     return render(request, 'accounts/signup_form.html', {
         'form':form,
     })
-
 
 
 @login_required # decorater that wraps the below ftn
