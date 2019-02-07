@@ -30,7 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls', namespace='blog')),
     path('dojo/', include('dojo.urls', namespace='dojo')),
-    path('account/', include('accounts.urls', namespace='account')),
+    path('accounts/', include('accounts.urls')),# auth rule에 따라 namespace 적용 안함
 
 ]
 
